@@ -1,0 +1,76 @@
+
+#top{
+  width: 800px;
+  height: 90px;
+  /* transform: skew(70deg); */
+
+}
+div.flux {
+  background: linear-gradient(to right, 
+    rgb(255, 164, 249, 1),
+    rgba(126, 208, 141, 1),
+    rgba(98, 197, 245, 1)
+    );
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.61),
+  inset 0px 0px 0.4px 1px rgba(40, 158, 255, 0.495),  
+  inset 0px 0px 3px 1px rgba(239,239,239,0.78);
+  /* box-shadow: 0px 0px 22px 5px rgba(255, 255, 255, 0.61),
+    inset 0px 0px 8px 1px rgba(239,239,239,0.78); */
+
+  width: 100%;
+  height: 100%;
+  filter: saturate(3);
+  overflow: hidden;
+}
+div.flux::after{
+  content: "";
+  position:absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  -webkit-filter:url(#flux);
+  mix-blend-mode: difference;
+  overflow: hidden;
+}
+div#noiseWrap{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+div#noiseWrap::after{
+  content: "";
+  position:absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  -webkit-filter:url(#noise);
+
+  mix-blend-mode: difference;
+  overflow: hidden;
+}
+div#displace{
+  width: 80%;
+  height: 20%;
+  -webkit-filter:url(#displacementFilter);
+
+  overflow: hidden;
+  transform: skew(70deg);
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.61),
+  inset 0px 0px 0.4px 1px rgba(40, 158, 255, 0.495),  
+  inset 0px 0px 3px 1px rgba(239,239,239,0.78);
+}
+div#displace::after{
+  content: "";
+  position:absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  overflow: hidden;
+}
+
+body{
+  background-color: rgb(83, 86, 88);
+}

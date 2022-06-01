@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./iridescent.css">
+  </head>
+  <body>
+      <div id="top" class="flux"></div>
+    <svg>
+      <filter id="flux">
+        <feTurbulence baseFrequency="0.02 0.04" type="turbulence" result="turb">
+          <animate id="first" attributeName="baseFrequency" attributeType="XML" begin="0s;second.end" dur="20" from="0.02 0.04" to="0.04 0.02"/>
+          <animate id="second" attributeName="baseFrequency" attributeType="XML" begin="first.end" dur="20" from="0.04 0.02" to="0.02 0.04"/>
+        </feTurbulence>
+        <feTurbulence 
+        type='fractalNoise' 
+        baseFrequency='6.29' 
+        numOctaves='6' 
+        stitchTiles='stitch'
+        result="noise"/>
+        <feComponentTransfer in="noise" result="opacityNoise">
+          <feFuncA type="linear" slope="0.2"/>
+        </feComponentTransfer>
+        <feMerge>
+          <feMergeNode in="turb"/>
+          <feMergeNode in="outNoise"/>
+        </feMerge>
+      </filter>
+      <filter id="displacementFilter">
+        <feTurbulence type="turbulence" 
+        baseFrequency="0.003" numOctaves=
+        "8" result="turbulence" />
+        <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="30" xChannelSelector="R" 
+        yChannelSelector="G"/>
+      </filter>
+    </svg>
+  </body>
+</html>
